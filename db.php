@@ -43,4 +43,23 @@ $conn->query("CREATE TABLE IF NOT EXISTS reviews (
 )");
 
 echo "База данных и таблицы созданы успешно!";
+
+$admin_login = 'Admin26';
+$admin_password = 'Demo20';
+
+$stmt = $conn->prepare("SELECT id FROM users WHERE login = ?");
+$stmt->bind_param("s", $admin_login);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 0) {
+    $hashed = password_hash($admin_password, PASSWORD_DEFAULT);
+    $stmt = $conn->prepare("INSERT INTO users (fio, phone, email, login, password) VALUES (?, ?, ?, ?, ?)");
+    $fio = 'Администратор';
+    $phone = '0000000000';
+    $email = 'admin@conference.ru';
+    $stmt->bind_param("sssss", $fio, $phone, $email, $admin_login, $hashed);
+    $stmt->execute();
+    echo "Админ создан автоматически<br>";
+}
 ?>

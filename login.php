@@ -24,11 +24,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
                 if ($login === 'Admin26' && $password === 'Demo20') {
                     $_SESSION['is_admin'] = true;
+                    header('Location: admin.php');
                 } else {
                     $_SESSION['is_admin'] = false;
+                    header('Location: my_requests.php');
                 }
-                
-                header('Location: my_requests.php');
                 exit;
             } else {
                 $error = "Неверный логин или пароль";
