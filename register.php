@@ -53,26 +53,46 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once 'header.php';
 ?>
 
-<h1>Регистрация</h1>
+<h1 class="page-title">Регистрация</h1>
 
 <?php if ($error): ?>
-    <p style="color:red"><?= htmlspecialchars($error) ?></p>
+    <div class="page-alert page-alert--error"><?= htmlspecialchars($error) ?></div>
 <?php endif; ?>
 
 <?php if ($success): ?>
-    <p style="color:green"><?= htmlspecialchars($success) ?></p>
+    <div class="page-alert page-alert--success"><?= htmlspecialchars($success) ?></div>
 <?php endif; ?>
 
-<form method="POST">
-    <input type="text" name="fio" placeholder="ФИО" required><br>
-    <input type="text" name="phone" placeholder="Телефон" required><br>
-    <input type="email" name="email" placeholder="Email" required><br>
-    <input type="text" name="login" placeholder="Логин (латиница+цифры, мин 6)" required><br>
-    <input type="password" name="password" placeholder="Пароль (мин 8)" required><br>
-    <input type="password" name="password_confirm" placeholder="Подтвердите пароль" required><br>
+<form class="form-card" method="POST">
+    <label class="form-group">
+        <span>ФИО</span>
+        <input type="text" name="fio" placeholder="Введите ФИО" required>
+    </label>
+    <label class="form-group">
+        <span>Телефон</span>
+        <input type="text" name="phone" placeholder="Введите телефон" required>
+    </label>
+    <label class="form-group">
+        <span>Email</span>
+        <input type="email" name="email" placeholder="Введите email" required>
+    </label>
+    <label class="form-group">
+        <span>Логин</span>
+        <input type="text" name="login" placeholder="Латиница и цифры, минимум 6" required>
+    </label>
+    <label class="form-group">
+        <span>Пароль</span>
+        <input type="password" name="password" placeholder="Минимум 8 символов" required>
+    </label>
+    <label class="form-group">
+        <span>Подтверждение пароля</span>
+        <input type="password" name="password_confirm" placeholder="Повторите пароль" required>
+    </label>
     <button type="submit">Зарегистрироваться</button>
 </form>
 
-<a href="login.php">Уже есть аккаунт? Войти</a>
+<div class="page-actions">
+    <a class="button-link secondary" href="login.php">Уже есть аккаунт? Войти</a>
+</div>
 
 <?php require_once 'footer.php'; ?>
