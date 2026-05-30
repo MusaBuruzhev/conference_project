@@ -42,7 +42,6 @@ $conn->query("CREATE TABLE IF NOT EXISTS reviews (
     FOREIGN KEY (request_id) REFERENCES requests(id) ON DELETE CASCADE
 )");
 
-echo "База данных и таблицы созданы успешно!";
 
 $admin_login = 'Admin26';
 $admin_password = 'Demo20';

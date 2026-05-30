@@ -49,31 +49,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+require_once 'header.php';
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Регистрация</title>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <?php if ($error): ?>
-        <p style="color:red"><?= htmlspecialchars($error) ?></p>
-    <?php endif; ?>
-    <?php if ($success): ?>
-        <p style="color:green"><?= htmlspecialchars($success) ?></p>
-    <?php endif; ?>
-    
-    <form method="POST">
-        <input type="text" name="fio" placeholder="ФИО" required><br>
-        <input type="text" name="phone" placeholder="Телефон" required><br>
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="text" name="login" placeholder="Логин (латиница+цифры, мин 6)" required><br>
-        <input type="password" name="password" placeholder="Пароль (мин 8)" required><br>
-        <input type="password" name="password_confirm" placeholder="Подтвердите пароль" required><br>
-        <button type="submit">Зарегистрироваться</button>
-    </form>
-    <a href="login.php">Уже есть аккаунт? Войти</a>
-</body>
-</html>
+<h1>Регистрация</h1>
+
+<?php if ($error): ?>
+    <p style="color:red"><?= htmlspecialchars($error) ?></p>
+<?php endif; ?>
+
+<?php if ($success): ?>
+    <p style="color:green"><?= htmlspecialchars($success) ?></p>
+<?php endif; ?>
+
+<form method="POST">
+    <input type="text" name="fio" placeholder="ФИО" required><br>
+    <input type="text" name="phone" placeholder="Телефон" required><br>
+    <input type="email" name="email" placeholder="Email" required><br>
+    <input type="text" name="login" placeholder="Логин (латиница+цифры, мин 6)" required><br>
+    <input type="password" name="password" placeholder="Пароль (мин 8)" required><br>
+    <input type="password" name="password_confirm" placeholder="Подтвердите пароль" required><br>
+    <button type="submit">Зарегистрироваться</button>
+</form>
+
+<a href="login.php">Уже есть аккаунт? Войти</a>
+
+<?php require_once 'footer.php'; ?>
