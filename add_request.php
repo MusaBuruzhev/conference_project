@@ -42,34 +42,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once 'header.php';
 ?>
 
-<h1 class="page-title">Новая заявка на помещение</h1>
+<section class="page-center">
+    <div class="center-card">
+        <h1 class="page-title">Новая заявка на помещение</h1>
 
-<?php if ($error): ?>
-    <div class="page-alert page-alert--error"><?= htmlspecialchars($error) ?></div>
-<?php endif; ?>
-<?php if ($success): ?>
-    <div class="page-alert page-alert--success"><?= htmlspecialchars($success) ?></div>
-<?php endif; ?>
+        <?php if ($error): ?>
+            <div class="page-alert page-alert--error"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
+        <?php if ($success): ?>
+            <div class="page-alert page-alert--success"><?= htmlspecialchars($success) ?></div>
+        <?php endif; ?>
 
-<form class="form-card" method="POST">
-    <label class="form-group">
-        <span>Выберите помещение</span>
-        <select name="room" required>
-            <option value="">-- Выберите помещение --</option>
-            <option value="auditorium">Аудитория</option>
-            <option value="coworking">Коворкинг</option>
-            <option value="cinema">Кинозал</option>
-        </select>
-    </label>
-    <label class="form-group">
-        <span>Дата начала</span>
-        <input type="text" name="date" placeholder="ДД.MM.ГГГГ" required>
-    </label>
-    <button type="submit">Отправить заявку</button>
-</form>
+        <form class="form-card" method="POST">
+            <label class="form-group">
+                <span>Выберите помещение</span>
+                <select name="room" required>
+                    <option value="">-- Выберите помещение --</option>
+                    <option value="auditorium">Аудитория</option>
+                    <option value="coworking">Коворкинг</option>
+                    <option value="cinema">Кинозал</option>
+                </select>
+            </label>
+            <label class="form-group">
+                <span>Дата начала</span>
+                <input type="text" name="date" placeholder="ДД.MM.ГГГГ" required>
+            </label>
+            <button type="submit">Отправить заявку</button>
+        </form>
 
-<div class="page-actions">
-    <a class="button-link secondary" href="my_requests.php">Назад к заявкам</a>
-</div>
+        <div class="page-actions">
+            <a class="button-link secondary" href="my_requests.php">Назад к заявкам</a>
+        </div>
+    </div>
+</section>
 
 <?php require_once 'footer.php'; ?>

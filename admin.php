@@ -24,9 +24,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['request_id']) && isse
     exit;
 }
 
-$sql = "SELECT requests.*, users.login 
+$sql = "SELECT requests.*, users.login, reviews.review 
         FROM requests 
         JOIN users ON requests.user_id = users.id 
+        LEFT JOIN reviews ON requests.id = reviews.request_id 
         ORDER BY requests.id DESC";
 $result = $conn->query($sql);
 
@@ -51,6 +52,7 @@ require_once 'header.php';
                         <th>Помещение</th>
                         <th>Дата</th>
                         <th>Статус</th>
+                        <th>Отзыв</th>
                         <th>Действие</th>
                     </tr>
                 </thead>
@@ -61,7 +63,7 @@ require_once 'header.php';
                         <td><?= htmlspecialchars($row['login']) ?></td>
                         <td><?= htmlspecialchars($roomNames[$row['room']] ?? $row['room']) ?></td>
                         <td><?= htmlspecialchars($row['date']) ?></td>
-                        <td><span class="status-pill"><?= htmlspecialchars($row['status']) ?></span></td>
+                        <td><?= htmlspecialchars(!empty($row['review']) ? mb_strimwidth($row['review'], 0, 70, '...') : '—') ?></td>
                         <td>
                             <form class="admin-form" method="POST">
                                 <input type="hidden" name="request_id" value="<?= $row['id'] ?>">

@@ -33,9 +33,15 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.querySelectorAll('.slider-placeholder').forEach(placeholder => {
         placeholder.innerHTML = sliderHtml;
+        const sliderElement = placeholder.querySelector('.slider');
+        if (!sliderElement) return;
+
         showSlide(0);
-        placeholder.querySelector('.slider .prev').addEventListener('click', prevSlide);
-        placeholder.querySelector('.slider .next').addEventListener('click', nextSlide);
+        const prevButton = sliderElement.querySelector('.prev');
+        const nextButton = sliderElement.querySelector('.next');
+        if (prevButton) prevButton.addEventListener('click', prevSlide);
+        if (nextButton) nextButton.addEventListener('click', nextSlide);
+
         setInterval(nextSlide, 3000);
     });
 });

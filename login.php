@@ -2,7 +2,7 @@
 session_start();
 require_once('db.php');
 
-$error = '';
+$error = ''; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $login = $_POST['login'];
@@ -42,26 +42,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 require_once 'header.php';
 ?>
 
-<h1 class="page-title">Вход</h1>
+<section class="page-center">
+    <div class="center-card">
+        <h1 class="page-title">Вход</h1>
 
-<?php if ($error): ?>
-    <div class="page-alert page-alert--error"><?= htmlspecialchars($error) ?></div>
-<?php endif; ?>
+        <?php if ($error): ?>
+            <div class="page-alert page-alert--error"><?= htmlspecialchars($error) ?></div>
+        <?php endif; ?>
 
-<form class="form-card" method="POST">
-    <label class="form-group">
-        <span>Логин</span>
-        <input type="text" name="login" placeholder="Введите логин" required>
-    </label>
-    <label class="form-group">
-        <span>Пароль</span>
-        <input type="password" name="password" placeholder="Введите пароль" required>
-    </label>
-    <button type="submit">Войти</button>
-</form>
+        <form class="form-card" method="POST">
+            <label class="form-group">
+                <span>Логин</span>
+                <input type="text" name="login" placeholder="Введите логин" required>
+            </label>
+            <label class="form-group">
+                <span>Пароль</span>
+                <input type="password" name="password" placeholder="Введите пароль" required>
+            </label>
+            <button type="submit">Войти</button>
+        </form>
 
-<div class="page-actions">
-    <a class="button-link secondary" href="register.php">Еще не зарегистрированы? Регистрация</a>
-</div>
+        <div class="page-actions">
+            <a class="button-link secondary" href="register.php">Еще не зарегистрированы? Регистрация</a>
+        </div>
+    </div>
+</section>
 
 <?php require_once 'footer.php'; ?>
